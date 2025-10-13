@@ -36,6 +36,9 @@ public class Txn {
 
     private String txnId;
 
+    private int settlementAmount;
+
     @Enumerated
     private TxnStatus txnStatus;
+
 }

@@ -1,6 +1,7 @@
 package org.gfg.Library_Management_Minor.service;
 
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
 import org.gfg.Library_Management_Minor.dto.UserRequest;
 import org.gfg.Library_Management_Minor.model.User;
 import org.gfg.Library_Management_Minor.model.UserType;
@@ -25,5 +26,9 @@ public class UserService {
         User user=userRequest.toUser();
         user.setUserType(UserType.valueOf("ADMIN"));
         return userRepository.save(user);
+    }
+
+    public User getStudentByPhoneNo(@NotBlank(message = "User phone number cannot be blank") String userPhoneNo, UserType userType) {
+        return userRepository.findByPhoneNoAndUserType(userPhoneNo, userType);
     }
 }
